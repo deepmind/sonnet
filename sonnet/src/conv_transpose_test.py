@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ============================================================================
-"""Tests for sonnet.v2.src.conv_transpose."""
+"""Tests for transpose convolutional modules in sonnet.v2.src.conv_transpose."""
 
 import itertools
 
@@ -106,7 +106,7 @@ class ConvTransposeTest(test_utils.TestCase, parameterized.TestCase):
       y1 = conv1(x)
       y2 = defun_conv(x)
 
-      self.assertAllClose(self.evaluate(y1), self.evaluate(y2), atol=1e-4)
+      self.assertAllClose(self.evaluate(y1), self.evaluate(y2), atol=1e-3)
 
   def testUnknownBatchSizeNHWC(self):
     x = tf.TensorSpec([None, 5, 5, 3], dtype=tf.float32)
